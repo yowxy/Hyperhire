@@ -1,0 +1,217 @@
+{
+    "info": {
+        "name": "HyperHire Backend API",
+        "description": "API Collection for HyperHire Dating App Backend",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "People",
+            "item": [
+                {
+                    "name": "Get All People",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/people?per_page=10",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "people"
+                            ],
+                            "query": [
+                                {
+                                    "key": "per_page",
+                                    "value": "10",
+                                    "description": "Number of items per page (1-100)"
+                                }
+                            ]
+                        },
+                        "description": "Get all people with pagination and likes/dislikes count"
+                    }
+                },
+                {
+                    "name": "Get Recommended People",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/people/recommended?per_page=10",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "people",
+                                "recommended"
+                            ],
+                            "query": [
+                                {
+                                    "key": "per_page",
+                                    "value": "10",
+                                    "description": "Number of items per page (1-100)"
+                                }
+                            ]
+                        },
+                        "description": "Get recommended people (those who haven't been liked/disliked yet)"
+                    }
+                },
+                {
+                    "name": "Get Person by ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/people/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "people",
+                                "1"
+                            ]
+                        },
+                        "description": "Get a specific person by their ID"
+                    }
+                },
+                {
+                    "name": "Create Person",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"John Doe\",\n  \"age\": 28,\n  \"location\": \"Jakarta, Indonesia\",\n  \"pictures\": [\n    \"https://i.pravatar.cc/300?img=60\",\n    \"https://i.pravatar.cc/300?img=61\"\n  ]\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/people",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "people"
+                            ]
+                        },
+                        "description": "Create a new person"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Likes",
+            "item": [
+                {
+                    "name": "Like Person",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"person_id\": 1\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/likes/like",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "likes",
+                                "like"
+                            ]
+                        },
+                        "description": "Like a person. If person reaches 50+ likes, email will be sent to admin."
+                    }
+                },
+                {
+                    "name": "Dislike Person",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"person_id\": 1\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/likes/dislike",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "likes",
+                                "dislike"
+                            ]
+                        },
+                        "description": "Dislike a person"
+                    }
+                },
+                {
+                    "name": "Get Liked People",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/likes/liked-people",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "likes",
+                                "liked-people"
+                            ]
+                        },
+                        "description": "Get all people that have been liked"
+                    }
+                },
+                {
+                    "name": "Get Disliked People",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/likes/disliked-people",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "likes",
+                                "disliked-people"
+                            ]
+                        },
+                        "description": "Get all people that have been disliked"
+                    }
+                }
+            ]
+        }
+    ],
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost",
+            "type": "string"
+        }
+    ]
+}
