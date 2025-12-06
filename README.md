@@ -2,7 +2,6 @@
 
 [![Laravel](https://img.shields.io/badge/Laravel-11.x-FF2D20?style=flat-square&logo=laravel)](https://laravel.com)
 [![PHP](https://img.shields.io/badge/PHP-8.2+-777BB4?style=flat-square&logo=php)](https://php.net)
-[![License](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
 
 Backend API untuk aplikasi dating HyperHire dengan fitur like/dislike, rekomendasi person, dan automated email notifications.
 
